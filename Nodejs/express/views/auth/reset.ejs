@@ -1,0 +1,18 @@
+<%- include('../include/head.ejs') %>
+
+  <body>
+    <%- include('../include/navigation.ejs') %>
+      <main>
+        <% if(errorMessage) { %>
+          <div><%= errorMessage %></div>
+        <% } %>
+        <form class="m-5" method="POST" action="/reset">
+          <div class="mb-3">
+            <label class="form-label">E-Mail</label>
+            <input class="form-control" type="email" name="email">
+          </div>
+          <input type="hidden" value="<%= csrfToken %>" name="_csrf">
+          <button class="btn btn-success" type="submit"> Reset Password </button>
+        </form>
+      </main>
+      <%- include('../include/end.ejs') %>

@@ -1,0 +1,33 @@
+<nav class="navbar navbar-expand-lg bg-warning align-items-space-between">
+  <div class="container-fluid">
+    <div class="navbar-nav">
+      <a class="nav-link <%= path === '/' ? 'active' : '' %>" href="/">Shop</a>
+      <a class="nav-link <%= path === '/products' ? 'active' : '' %>" href="/products">Products</a>
+      <% if(isAuthenticated) { %>
+        <a class="nav-link <%= path === '/cart' ? 'active' : '' %>" href="/cart">Cart</a>
+        <a class="nav-link <%= path === '/orders' ? 'active' : '' %>" href="/orders">Orders</a>
+        <a class="nav-link <%= path === '/admin/add-product' ? 'active' : '' %>" href="/admin/add-product">Add Product
+        </a>
+        <a class="nav-link <%= path === '/admin/products' ? 'active' : '' %>" href="/admin/products">Admin Products</a>
+
+        <% } %>
+    </div>
+  </div>
+  <div class="container-fluid justify-content-end">
+    <% if(!isAuthenticated) { %>
+      <div class="navbar-nav">
+        <a href="/login" class="nav-link <%= path === '/login' ? 'active' : '' %>">Login</a>
+      </div>
+      <div class="navbar-nav">
+        <a href="/signup" class="nav-link <%= path === '/signup' ? 'active' : '' %>">Sign Up</a>
+      </div>
+    <% } else { %>
+      <div class="navbar-nav">
+        <form action="/logout" method="POST">
+          <input type="hidden" value="<%= csrfToken %>" name="_csrf">
+          <button class="nav-link">Logout</button>
+        </form>
+      </div>
+    <% } %>
+  </div>
+</nav>

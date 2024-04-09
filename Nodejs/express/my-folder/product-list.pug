@@ -1,0 +1,23 @@
+extends layouts/main-layout.pug
+
+block styles 
+  link(href='https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css' rel='stylesheet' integrity='sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN' crossorigin='anonymous')
+  script(src='https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js' integrity='sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL' crossorigin='anonymous')
+
+block content 
+  main
+    if prods.length > 0
+        table.mt-4.table
+          tr 
+            th Product Name 
+            th Description 
+            th Price 
+            th Sold By
+          each product in prods 
+            tr 
+              td #{product.productName}
+              td #{product.description}
+              td #{product.price}
+              td #{product.saler}
+    else 
+      h2.m-4 No Products

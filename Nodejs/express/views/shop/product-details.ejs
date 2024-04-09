@@ -1,0 +1,39 @@
+<%- include('../include/head.ejs') %>
+
+  <body>
+    <%- include('../include/navigation.ejs') %>
+      <main>
+        <table class="mt-4 table">
+          <tr>
+            <th>Product Name</th>
+            <th>Description</th>
+            <th>Price</th>
+            <th>Sold By</th>
+            <% if(isAuthenticated) { %>
+              <th>Add to Cart</th>
+            <% } %>
+          </tr>
+
+          <tr>
+            <td>
+              <%= prods.title %>
+            </td>
+            <td>
+              <%= prods.description %>
+            </td>
+            <td>
+              <%= prods.price %>
+            </td>
+            <td>
+              <%= prods.saler %>
+            </td>
+            <td>
+              <% if(isAuthenticated) { %>
+                <%- include('../include/add-to-cart.ejs', {product: prods}) %>
+              <% } %>
+            </td>
+          </tr>
+        </table>
+      </main>
+
+      <%- include('../include/end.ejs') %>

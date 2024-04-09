@@ -1,0 +1,47 @@
+<%- include('../include/head.ejs') %>
+
+  <body>
+    <%- include('../include/navigation.ejs') %>
+      <main>
+        <% if (prods.length> 0) { %>
+          <table class="mt-4 table">
+            <tr>
+              <th>Product Name</th>
+              <th>Description</th>
+              <th>Price</th>
+              <th>Sold By</th>
+              <%  if(isAuthenticated) { %>
+                <th>Add to Cart</th>
+              <% } %>
+            </tr>
+            <% for (let product of prods) { %>
+              <tr>
+                <td>
+                  <%= product.title %>
+                </td>
+                <td>
+                  <%= product.description %>
+                </td>
+                <td>
+                  <%= product.price %>
+                </td>
+                <td>
+                  <%= product.saler %>
+                </td>
+                <td>
+                  <% if(isAuthenticated) { %>
+                  <form action="/cart" method="POST">
+                    <button class="btn btn-success">Add</button>
+                    <input type="hidden" name="productId" value="<%= product._id %>">
+                    <input type="hidden" value="<%= csrfToken %>" name="_csrf">
+                  </form>
+                  <% } %>
+                </td>
+              </tr>
+              <% } %>
+          </table>
+          <% } else { %>
+            <h2 class="m-4">No Products</h2>
+            <% } %>
+      </main>
+      <%- include('../include/end.ejs') %>

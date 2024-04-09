@@ -1,0 +1,45 @@
+<%- include('../include/head.ejs') %>
+
+  <body>
+    <%- include('../include/navigation.ejs') %>
+      <main>
+        <% if (prods.length> 0) { %>
+          <table class="mt-4 table">
+            <tr>
+              <th>Product Name</th>
+              <th>Description</th>
+              <th>Price</th>
+              <th>Sold By</th>
+              <th>Edit</th>
+              <th>Delete</th>
+            </tr>
+            <% for (let product of prods) { %>
+              <tr>
+                <td>
+                  <%= product.title %>
+                </td>
+                <td>
+                  <%= product.description %>
+                </td>
+                <td>
+                  <%= product.price %>
+                </td>
+                <td>
+                  <%= product.saler %>
+                </td>
+                <td><a href="/admin/edit-product/<%= product._id %>?edit=true"><button class="btn btn-warning">Edit</button></a></td>
+                <td>
+                  <form action="/admin/delete-product" method="POST">
+                    <input type="hidden" value="<%= product._id %>" name="productId">
+                    <input type="hidden" value="<%= csrfToken %>" name="_csrf">
+                    <button type="submit" class="btn btn-danger">Delete</button>
+                  </form>
+                </td>
+              </tr>
+              <% } %>
+          </table>
+          <% } else { %>
+            <h2 class="m-4">No Products</h2>
+            <% } %>
+      </main>
+      <%- include('../include/end.ejs') %>

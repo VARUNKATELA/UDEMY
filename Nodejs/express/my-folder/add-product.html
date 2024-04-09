@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Add Product</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+    crossorigin="anonymous"></script>
+</head>
+
+<body>
+  <nav class="navbar navbar-expand-lg bg-warning">
+    <div class="container-fluid">
+      <div class="navbar-nav">
+        <a class="nav-link" href="/">Shop</a>
+        <a class="nav-link" href="/admin/add-product">Add Products</a>
+      </div>
+    </div>
+  </nav>
+  <main>
+    <form class="m-5" method="POST" action="/admin/add-product">
+      <div class="mb-3">
+        <label class="form-label">Name of Product</label>
+        <input class="form-control" type="text" name="product_name" />
+      </div>
+      <div class="mb-3">
+        <label class="form-label">Description </label>
+        <input class="form-control" type="text" name="description" />
+      </div>
+      <div class="mb-3">
+        <label class="form-label">Price</label>
+        <input class="form-control" type="number" name="price" />
+      </div>
+      <div class="mb-3">
+        <label class="form-label">Sold by</label>
+        <input class="form-control" type="text" name="sold_by" />
+      </div>
+      <button class="btn btn-success" type="submit">Add</button>
+    </form>
+  </main>
+</body>
+
+</html>
